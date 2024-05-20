@@ -16,7 +16,7 @@ class Brand(models.Model):
 class Car(models.Model):
     id = models.AutoField(primary_key= True)
     model = models.CharField(max_length = 30) #charfield aceita qualquer tipo de caracter , blank = True significa que o bloco pode ficar vazio , null igual a nulo 
-    brand = models.ForeignKey(Brand, on_delete = models.PROTECT, related_name='car_brand') #foreignKey é uma ligação de class
+    brand = models.ForeignKey(Brand, on_delete = models.PROTECT, related_name='car_brand', blank= True, null = True) #foreignKey é uma ligação de class
     factory_year = models.IntegerField(blank = True, null = True)
     model_year = models.IntegerField( blank = True, null = True)
     plate = models.CharField(max_length = 10, blank = True, null = True)

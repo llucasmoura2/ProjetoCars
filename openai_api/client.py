@@ -2,7 +2,7 @@ from openai import OpenAI
 #sk-proj-MMRDOfEtWujP8ISbF6TVT3BlbkFJO3O42j3qhTXv6idF21AY
 
 client = OpenAI(
-    api_key='sk-proj-MMRDOfEtWujP8ISbF6TVT3BlbkFJO3O42j3qhTXv6idF21AY'
+    api_key='sua_api_key'
 )
 
 

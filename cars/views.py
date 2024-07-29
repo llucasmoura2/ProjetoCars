@@ -6,9 +6,6 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 
 
-# Create your views here.
-
-
 class CarListViews(ListView):
     model = Car
     template_name = 'cars.html'
@@ -21,6 +18,23 @@ class CarListViews(ListView):
             cars = Car.objects.filter(model__icontains = search)
         return cars
 
+
+<<<<<<< HEAD
+=======
+class NewCarView(View):
+    def get(self, request):
+        new_car_form = CarModelForm()
+        return render (request, 'new_car.html', {'new_car_form': new_car_form})
+    
+    def post(self, request):
+        new_car_form = CarModelForm(request.POST, request.FILES)
+        if new_car_form.is_valid():
+            new_car_form.save()
+            return redirect('cars_list')
+        return render (request, 'new_car.html', {'new_car_form': new_car_form})
+
+
+>>>>>>> f1089612de8c70c6db8ed8f2c96c39886a704d00
 
 @method_decorator(login_required(login_url= 'login'), name = 'dispatch')
 class NewCarCreatView(CreateView):

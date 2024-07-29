@@ -1,32 +1,46 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-
-<form method="post">
-    {% csrf_token %}
-
-   <div class="form-group">
-       {{ user_form.username.errors }}
-       <label>usuário:</label>
-       {{ user_form.username }}
-   </div>
-
-   <div class="form-group">
-       {{ user_form.password1.errors }}
-       <label> Senha:</label>
-       {{ user_form.password1 }}
-   </div>
-
-   <div class="form-group">
-       {{ user_form.password2.errors }}
-       <label> Confirmação de Senha:</label>
-       {{ user_form.password2 }}
-   </div>
-
-   <div class="form-group">
-       <input type="submit" value="cadastrar">
-   </div>
-    
-</form>
-
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card border-0 shadow-lg">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Registrar</h3>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3">
+                            <label for="{{ user_form.username.id_for_label }}" class="form-label">Usuário:</label>
+                            {{ user_form.username.errors }}
+                            <input type="text" name="{{ user_form.username.name }}" class="form-control" id="{{ user_form.username.id_for_label }}">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="{{ user_form.password1.id_for_label }}" class="form-label">Senha:</label>
+                            {{ user_form.password1.errors }}
+                            <input type="password" name="{{ user_form.password1.name }}" class="form-control" id="{{ user_form.password1.id_for_label }}">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="{{ user_form.password2.id_for_label }}" class="form-label">Confirmação de Senha:</label>
+                            {{ user_form.password2.errors }}
+                            <input type="password" name="{{ user_form.password2.name }}" class="form-control" id="{{ user_form.password2.id_for_label }}">
+                        </div>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center py-3">
+                    <small class="text-muted">Já tem uma conta? <a href="{% url 'login' %}" class="text-primary">Login</a></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
